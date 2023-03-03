@@ -15,6 +15,7 @@ const Cart = () => {
   // console.log("cartProducts",cartProducts)
   // const dispatch = useDispatch();
 
+  
   return (
     <>
       <Header />
@@ -22,7 +23,7 @@ const Cart = () => {
         <div className="container h-100 py-5">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col-md-12 col-lg-12 col-xl-12 offset-lg-1 text-center mb-5">
-              <h5 className="mb-0">Total Amount: ${totalAmount}</h5>
+              <h5 className="mb-0">Total Amount:  &#8377;{totalAmount}</h5>
             </div>
             <div className="col-10">
               <div className="d-flex justify-content-between align-items-center mb-4">

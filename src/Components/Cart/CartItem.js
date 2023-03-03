@@ -4,7 +4,7 @@ import { cartAction } from "../../Store/ShoppinCart/CartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Products from "../FakeData/FakeData";
 const CartItem = ({item}) => {
-  const { id,title,image,price,totalPrice,quantity} = item
+  const { id,title,thumbnail,price,totalPrice,quantity} = item
   console.log("item", item)
 //   console.log("Products", Products);
 
@@ -16,7 +16,7 @@ const CartItem = ({item}) => {
   const incrementItem = () => {
       dispatch(
         cartAction.add({
-            id,title,image,price
+            id,title,thumbnail,price
         })
       );
     };
@@ -46,7 +46,7 @@ const CartItem = ({item}) => {
                         <div className="row d-flex justify-content-between align-items-center">
                           <div className="col-md-2 col-lg-2 col-xl-2">
                             <img
-                              src={image}
+                              src={thumbnail}
                               className="img-fluid rounded-3"
                               alt="item"
                             />
@@ -54,7 +54,7 @@ const CartItem = ({item}) => {
                           <div className="col-md-3 col-lg-3 col-xl-3">
                             <p className="lead fw-normal mb-2">{title}</p>
                             <p>
-                              <span className="text-muted">Price: </span>{price}
+                              <span className="text-muted"> &#8377;</span>{price}
                             </p>
                           </div>
                           <div className="col-md-3 col-lg-3 col-xl-2 d-flex align-items-center gap-3">
@@ -72,7 +72,7 @@ const CartItem = ({item}) => {
                           <div className="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
                             {/* <h5 className="mb-0">Total Amount: ${totalAmount}</h5> */}
                             {/* <p className="m-0">Total Price: {totalPrice}</p> */}
-                            <p className="m-0">Total Price: {totalPrice.toString().substr(0,6)}</p>
+                            <p className="m-0">Total Price: &#8377; {totalPrice.toString().substr(0,6)}</p>
                             {/* <p className="m-0">Total Price:  {`${totalPrice.substring()}...`}</p> */}
                           </div>
                           <div className="col-md-1 col-lg-1 col-xl-1 text-end">

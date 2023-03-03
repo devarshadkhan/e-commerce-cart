@@ -9,20 +9,22 @@ const ProductCart = (props) => {
   
   const dispatch = useDispatch();
   // const [showBtn, setShowBtn] = useState(cartAction);
-  const { id, title, image, price, category, description } = props.item;
+  const { id, title, thumbnail, price, category, description } = props.item;
   const quantity = useSelector((state) => state.cart.quantity)
+  const totalQuantity = useSelector((state) => state.cart.totalQuantity)
   const ADD_TO_CART = () => {
     dispatch(
       cartAction.add({
         id,
         title,
-        image,
+        thumbnail,
         price,
         category,
         description,
       })
     );
-    toast.success("Added to cart", {
+    // toast.success(`${totalQuantity}  Added to cart`, {
+    toast.success(` Added to cart`, {
       position: "top-right",
       autoClose: 1000,
       hideProgressBar: false,
@@ -37,21 +39,8 @@ const ProductCart = (props) => {
     // setShowBtn(!showBtn)
   };
 
-  const incrementItem = () => {
-    dispatch(
-      cartAction.add({
-          id,title,image,price
-      })
-    );
-  };
 
-  const decrementItem = () => {
-    dispatch(
-      cartAction.remove(id)
-    )
-  }
-
-  //    console.log("ADD_TO_CART",ADD_TO_CART)
+ 
   return (
     <>
       <ToastContainer/>
@@ -67,14 +56,14 @@ const ProductCart = (props) => {
             {/* <div className="col-md-3" key={id}> */}
 
             <div class="card p-2 mb-3 ">
-              <img src={image} class="card-img-top" alt="Product__Image" />
+              <img src={thumbnail} class="card-img-top" alt="Product__Image" />
               <div class="card-body text-center">
                 <h5 class="card-title">{`${title.substring(0, 12)}...`}</h5>
                 <p class="card-text">{category}</p>
                 <span class="card-text">
                   {`${description.substring(0, 20)}...`}
                 </span>
-                <p class="card-text">${price}</p>
+                <p class="card-text"> &#8377;{price}</p>
                 {/* {showBtn ? <button class="btn btn-primary" onClick={ADD_TO_CART}>
                   Add to cart
                 </button> 
