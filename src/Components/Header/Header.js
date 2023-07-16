@@ -1,45 +1,64 @@
-import React from 'react'
-import {useSelector,useDispatch} from "react-redux"
-import { Link } from 'react-router-dom'
-import { cartAction } from '../../Store/ShoppinCart/CartSlice'
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { cartAction } from "../../Store/ShoppinCart/CartSlice";
 const Header = () => {
+  const dispatch = useDispatch();
 
-    const dispatch = useDispatch()
-
-    const totalQuantity = useSelector((state) => state.cart.totalQuantity)
+  const totalQuantity = useSelector((state) => state.cart.totalQuantity);
   return (
-   <>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container">
-    <Link class="navbar-brand" to="/">Redux With Add To Cart</Link>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse " id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        {/* <li class="nav-item">
+    <>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container">
+          <Link class="navbar-brand" to="/">
+            Ecommerce Cart
+          </Link>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <Link class="nav-link active" aria-current="page" to="/">
+                  Home
+                </Link>
+              </li>
+              {/* <li class="nav-item">
           <Link to="/cart" class="nav-link" >Cart: {totalQuantity}</Link>
         </li> */}
-     
-        <li class="nav-item">
-          {/* <Link to="/cart" class="nav-link " > <i className='fa fa-cart-plus ' style={{color:"red"}}></i> Cart: {totalQuantity}</Link> */}
-          <Link to="/cart" class="position-relative btn btn-primary" style={{background:"transparent",color:"#000",border:"none",padding:"0"}}>
-  <i className='fa fa-cart-plus'></i>
-  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-    {totalQuantity}
-    <span class="visually-hidden">unread messages</span>
-  </span>
-</Link>
-        </li>
-      </ul>
 
-    </div>
-  </div>
-</nav>
-{/* 
+              <li class="nav-item">
+                {/* <Link to="/cart" class="nav-link " > <i className='fa fa-cart-plus ' style={{color:"red"}}></i> Cart: {totalQuantity}</Link> */}
+                <Link
+                  to="/cart"
+                  class="position-relative btn btn-primary"
+                  style={{
+                    background: "transparent",
+                    color: "#000",
+                    border: "none",
+                    padding: "0",
+                  }}
+                >
+                  <i className="fa fa-cart-plus"></i>
+                  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    {totalQuantity}
+                    <span class="visually-hidden">unread messages</span>
+                  </span>
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      {/* 
 <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
   <div class="offcanvas-header">
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -119,8 +138,8 @@ const Header = () => {
 </section>
   </div>
 </div> */}
-   </>
-  )
-}
+    </>
+  );
+};
 
-export default Header
+export default Header;
