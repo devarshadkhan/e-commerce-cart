@@ -81,14 +81,7 @@ const ProductCart = (props) => {
               </div>
             </div>
           </div>
-      
-      {/* </>
-                    )
-                })
-            } */}
-      {/* </div> */}
-      {/* </div>
-      </div> */}
+  
     </>
   );
 };
