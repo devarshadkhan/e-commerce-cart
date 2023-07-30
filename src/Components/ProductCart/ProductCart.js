@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 // import Products from "../FakeData/FakeData"
-import { useDispatch,useSelector } from "react-redux"; // dispathc lene padega redux kisi checz ko dispatch karne ke liye
+import { useDispatch, useSelector } from "react-redux"; // dispathc lene padega redux kisi checz ko dispatch karne ke liye
 import { cartAction } from "../../Store/ShoppinCart/CartSlice";
 import { toast, ToastContainer } from "react-toastify";
 
 const ProductCart = (props) => {
-  
   const dispatch = useDispatch();
   // const [showBtn, setShowBtn] = useState(cartAction);
   const { id, title, thumbnail, price, category, description } = props.item;
-  const quantity = useSelector((state) => state.cart.quantity)
-  const totalQuantity = useSelector((state) => state.cart.totalQuantity)
+  const quantity = useSelector((state) => state.cart.quantity);
+  const totalQuantity = useSelector((state) => state.cart.totalQuantity);
   const ADD_TO_CART = () => {
     dispatch(
       cartAction.add({
@@ -39,13 +38,10 @@ const ProductCart = (props) => {
     // setShowBtn(!showBtn)
   };
 
-
- 
   return (
     <>
-      <ToastContainer/>
-      <b-card>
-        <b-skeleton animation="fade" width="85%">
+      <ToastContainer />
+     
           <div className="wrapper-1 mt-5">
             {/* <div className="container">
           <div className="row"> */}
@@ -79,16 +75,13 @@ const ProductCart = (props) => {
                   </button>
                 </div>
                  } */}
-                 <button class="btn btn-primary" onClick={ADD_TO_CART}>
+                <button class="btn btn-primary" onClick={ADD_TO_CART}>
                   Add to cart
-                </button> 
-                
-                
+                </button>
               </div>
             </div>
           </div>
-        </b-skeleton>
-      </b-card>
+      
       {/* </>
                     )
                 })
