@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import ProductCart from "../ProductCart/ProductCart";
-import Products from "../FakeData/FakeData";
-import Header from "../Header/Header";
+import ProductCart from "../Components/ProductCart/ProductCart";
+import Products from "../Components/FakeData/FakeData";
+import Header from "../Components/Header/Header";
 import { useDispatch, useSelector } from "react-redux";
-import { filterByPrice } from "../../Store/ShoppinCart/FilterProduct";
+import { filterByPrice } from "../Store/ShoppinCart/FilterProduct";
 import {
   selectCategory,
   deselectCategory,
-} from "../../Store/ShoppinCart/CategoryFilter";
+} from "../Store/ShoppinCart/CategoryFilter";
 import ReactPaginate from "react-paginate";
 
 export const Home = () => {
@@ -80,7 +80,7 @@ export const Home = () => {
     if (selectedCategories.includes(category)) {
       setSelectedCategories(selectedCategories.filter((e) => e !== category));
     } else {
-      setSelectedCategories([...selectedCategories,category]);
+      setSelectedCategories([...selectedCategories, category]);
     }
   };
 
@@ -90,6 +90,17 @@ export const Home = () => {
       )
     : filteredProducts;
 
+  const hasFilteredProducts = allFilteredProducts.length > 0;
+
+  // loader
+
+  // const [loading, setLoading] = useState(false);
+  // const handleFilter = () => {
+  //   setLoading(true);
+  //   setTimeout(() => {
+  //     setLoading(false);
+  //   }, 2000);
+  // };
   return (
     <>
       <Header />
@@ -105,10 +116,9 @@ export const Home = () => {
                   <option value="0-100">0-100</option>
                   <option value="100-500">100-500</option>
                   <option value="500-1000">500-1000</option>
-                  <option value="500-1000">1000-10000</option>
+                  <option value="1000-10000">1000-10000</option>
                 </select>
               </div>
-
             </div>
             <div className="col-md-9 ">
               {Products.map((item) => {
@@ -121,10 +131,13 @@ export const Home = () => {
                             class="form-check-input"
                             type="checkbox"
                             value={selectedCategories}
-                            // id="flexCheckDefault"
                             id={item.filterbycheck}
-                            checked={selectedCategories.includes(item.filterbycheck)}
-                            onChange={() => handleCategoryChange(item.filterbycheck)}
+                            checked={selectedCategories.includes(
+                              item.filterbycheck
+                            )}
+                            onChange={() =>
+                              handleCategoryChange(item.filterbycheck)
+                            }
                           />
                           {item.filterbycheck}
                         </div>
@@ -133,13 +146,14 @@ export const Home = () => {
                   );
                 }
               })}
+              {/* <button onClick={handleFilter}>Apply Filter</button> */}
             </div>
           </div>
         </div>
       </div>
       <div className="container">
         <div className="row justify-content-center">
-          {allFilteredProducts.map((item) => {
+          {/* {allFilteredProducts.map((item) => {
             return (
               <>
                 <div className="col-lg-3 col-md-6 col-sm-12 " key={item}>
@@ -147,7 +161,18 @@ export const Home = () => {
                 </div>
               </>
             );
-          })}
+          })} */}
+          {hasFilteredProducts ? (
+            allFilteredProducts.map((item) => (
+              <div className="col-lg-3 col-md-6 col-sm-12" key={item.productId}>
+                <ProductCart item={item} />
+              </div>
+            ))
+          ) : (
+            <div className="col-md-12">
+              <p className="nodatafound">No data found.</p>
+            </div>
+          )}
 
           <div className="col-md-12">
             <div>
