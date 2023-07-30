@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
 import {BrowserRouter,Route,Routes} from "react-router-dom"
 import Cart from './Components/Cart/Cart';
-import { Home } from './Components/Pages/Home';
+import { Home } from './Pages/Home';
 function App() {
   return (
     <div className="App">
