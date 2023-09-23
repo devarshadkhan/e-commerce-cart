@@ -60,7 +60,7 @@ const ProductCart = (props) => {
                   {`${description.substring(0, 20)}...`}
                 </span>
                 {/* <p class="card-text"> &#8377;{price}</p> */}
-                <p class="card-text"> ${price}</p>
+                <p class="card-text"> &#8377; {price}</p>
                 {/* {showBtn ? <button class="btn btn-primary" onClick={ADD_TO_CART}>
                   Add to cart
                 </button> 
